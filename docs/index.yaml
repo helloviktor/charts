@@ -3,7 +3,7 @@ entries:
   cloudflared:
   - apiVersion: v2
     appVersion: 1818-6658717
-    created: "2026-03-15T11:55:26.071005176+01:00"
+    created: "2026-03-21T10:22:42.39932775+01:00"
     description: A Helm chart for cloudflared tunnel.
     digest: 7ae06b59d2b7215fba4ce5326bb4d12189fbf8adc24177ba35fc7f14113eaba2
     name: cloudflared
@@ -14,7 +14,7 @@ entries:
   linkding:
   - apiVersion: v2
     appVersion: 1.45.0-alpine
-    created: "2026-03-15T11:55:26.071266166+01:00"
+    created: "2026-03-21T10:22:42.399603876+01:00"
     description: A simple Helm chart for Linkding. Requires ingressRoute.host to be
       set for IngressRoute creation.
     digest: 411c6f9cecb9d643cf2238f98d64b4be403738d3b1d49b34e32b9bf9fc903987
@@ -26,7 +26,7 @@ entries:
   miniflux:
   - apiVersion: v2
     appVersion: 2.2.16-distroless
-    created: "2026-03-15T11:55:26.071589709+01:00"
+    created: "2026-03-21T10:22:42.399870225+01:00"
     description: A simple Helm chart for Miniflux. Requires ingressRoute.host to be
       set for IngressRoute creation.
     digest: 0f46abc224e0e275935fb445287956c3bfce824f727d9beb58283b8afe1fb6f3
@@ -38,7 +38,17 @@ entries:
   postgres:
   - apiVersion: v2
     appVersion: 18.2-trixie
-    created: "2026-03-15T11:55:26.071965381+01:00"
+    created: "2026-03-21T10:22:42.400383357+01:00"
+    description: A Helm chart for PostgreSQL.
+    digest: 886a08dc2f0a608529ca9857687364b03417a604766f3139dc74b3c966288582
+    name: postgres
+    type: application
+    urls:
+    - https://helloviktor.github.io/charts/postgres-0.2.0.tgz
+    version: 0.2.0
+  - apiVersion: v2
+    appVersion: 18.2-trixie
+    created: "2026-03-21T10:22:42.400135894+01:00"
     description: A Helm chart for PostgreSQL.
     digest: d1a5e0c7991b86371297de94d2d816f684738d1f75089bfd73b096f026f73301
     name: postgres
@@ -49,7 +59,7 @@ entries:
   whoami:
   - apiVersion: v2
     appVersion: v1.11
-    created: "2026-03-15T11:55:26.072189028+01:00"
+    created: "2026-03-21T10:22:42.40059759+01:00"
     description: A simple Helm chart for traefik/whoami container. Requires ingressRoute.host
       to be set for IngressRoute creation.
     digest: 8f00fb90c8c36d3472ec51c97de49e7cf5b89addc6b5245a39bf5baab50cc997
@@ -58,4 +68,4 @@ entries:
     urls:
     - https://helloviktor.github.io/charts/whoami-0.1.0.tgz
     version: 0.1.0
-generated: "2026-03-15T11:55:26.07057533+01:00"
+generated: "2026-03-21T10:22:42.398770736+01:00"
