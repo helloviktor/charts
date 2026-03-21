@@ -33,3 +33,7 @@ livenessProbe:
   initialDelaySeconds: 10
   periodSeconds: 10
   failureThreshold: 1
+
+# Optional SQL script executed on first database initialization.
+# Pass via --set-file initScript=path/to/init.sql
+initScript: ""

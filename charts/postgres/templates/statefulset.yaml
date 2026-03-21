@@ -29,6 +29,10 @@ spec:
           volumeMounts:
             - name: postgres-data
               mountPath: {{ .Values.persistence.mountPath }}
+            {{- if .Values.initScript }}
+            - name: init-script
+              mountPath: /docker-entrypoint-initdb.d
+            {{- end }}
           livenessProbe:
             exec:
               command:
@@ -38,6 +42,12 @@ spec:
             failureThreshold: {{ .Values.livenessProbe.failureThreshold }}
             initialDelaySeconds: {{ .Values.livenessProbe.initialDelaySeconds }}
             periodSeconds: {{ .Values.livenessProbe.periodSeconds }}
+      {{- if .Values.initScript }}
+      volumes:
+        - name: init-script
+          configMap:
+            name: {{ printf "%s-init" (include "postgres.fullname" .) | trunc 63 | trimSuffix "-" }}
+      {{- end }}
   volumeClaimTemplates:
     - metadata:
         name: postgres-data
