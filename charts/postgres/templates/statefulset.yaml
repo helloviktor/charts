@@ -46,7 +46,7 @@ spec:
       volumes:
         - name: init-script
           configMap:
-            name: {{ include "postgres.fullname" . }}-init
+            name: {{ printf "%s-init" (include "postgres.fullname" .) | trunc 63 | trimSuffix "-" }}
       {{- end }}
   volumeClaimTemplates:
     - metadata:
