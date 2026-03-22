@@ -1,8 +1,8 @@
-{{- if .Values.initScript }}
+{{- if and .Values.initScript (not .Values.initScriptConfigMap) }}
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: {{ printf "%s-init" (include "postgres.fullname" .) | trunc 63 | trimSuffix "-" }}
+  name: {{ include "postgres.initScriptConfigMapName" . }}
   labels:
     {{- include "postgres.labels" . | nindent 4 }}
 data:

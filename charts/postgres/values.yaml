@@ -37,3 +37,7 @@ livenessProbe:
 # Optional SQL script executed on first database initialization.
 # Pass via --set-file initScript=path/to/init.sql
 initScript: ""
+
+# Optional existing ConfigMap containing SQL initialization scripts.
+# When set, the chart mounts this ConfigMap and does not create one from initScript.
+initScriptConfigMap: ""

@@ -54,3 +54,14 @@ Resolve the Secret name used by PostgreSQL.
 {{- define "postgres.secretName" -}}
 {{- default (printf "%s-secrets" (include "postgres.fullname" .)) .Values.secret.name -}}
 {{- end }}
+
+{{/*
+Resolve the ConfigMap name used for initialization SQL scripts.
+*/}}
+{{- define "postgres.initScriptConfigMapName" -}}
+{{- if .Values.initScriptConfigMap -}}
+{{- .Values.initScriptConfigMap -}}
+{{- else if .Values.initScript -}}
+{{- printf "%s-init" (include "postgres.fullname" .) | trunc 63 | trimSuffix "-" -}}
+{{- end -}}
+{{- end }}
