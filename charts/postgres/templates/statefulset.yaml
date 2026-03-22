@@ -1,5 +1,6 @@
 apiVersion: apps/v1
 kind: StatefulSet
+{{- $initScriptConfigMapName := include "postgres.initScriptConfigMapName" . }}
 metadata:
   name: {{ include "postgres.fullname" . }}
   labels:
@@ -29,7 +30,7 @@ spec:
           volumeMounts:
             - name: postgres-data
               mountPath: {{ .Values.persistence.mountPath }}
-            {{- if .Values.initScript }}
+            {{- if $initScriptConfigMapName }}
             - name: init-script
               mountPath: /docker-entrypoint-initdb.d
             {{- end }}
@@ -42,11 +43,11 @@ spec:
             failureThreshold: {{ .Values.livenessProbe.failureThreshold }}
             initialDelaySeconds: {{ .Values.livenessProbe.initialDelaySeconds }}
             periodSeconds: {{ .Values.livenessProbe.periodSeconds }}
-      {{- if .Values.initScript }}
+      {{- if $initScriptConfigMapName }}
       volumes:
         - name: init-script
           configMap:
-            name: {{ printf "%s-init" (include "postgres.fullname" .) | trunc 63 | trimSuffix "-" }}
+            name: {{ $initScriptConfigMapName }}
       {{- end }}
   volumeClaimTemplates:
     - metadata:
